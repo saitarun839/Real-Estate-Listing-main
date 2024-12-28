@@ -1,0 +1,128 @@
+<div class="filter-bar row">
+  <div class="filter-container col-lg-12">
+    <div class="scroll-arrow left-arrow">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+    <div id="filters" class="overflow-auto">
+      <a class="filter" href="/listings/filter/all">
+        <div>
+          <i class="fa-solid fa-hotel"></i>
+        </div>
+        <span>All Listings</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/rooms">
+        <div>
+          <i class="fa-solid fa-bed"></i>
+        </div>
+        <span>Rooms</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/iconiccities">
+        <div>
+          <i class="fa-solid fa-mountain-city"></i>
+        </div>
+        <span>Iconic Cities</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/mountains">
+        <div>
+          <i class="fa-solid fa-mountain"></i>
+        </div>
+        <span>Mountains</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/castles">
+        <div>
+          <i class="fa-brands fa-fort-awesome"></i>
+        </div>
+        <span>Castles</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/amazingpools">
+        <div>
+          <i class="fa-solid fa-person-swimming"></i>
+        </div>
+        <span>Amazing Pools</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/camping">
+        <div>
+          <i class="fa-solid fa-campground"></i>
+        </div>
+        <span>Camping</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/farms">
+        <div>
+          <i class="fa-solid fa-cow"></i>
+        </div>
+        <span>Farms</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/arctic">
+        <div>
+          <i class="fa-regular fa-snowflake"></i>
+        </div>
+        <span>Arctic</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/indoors">
+        <div>
+          <i class="fa-solid fa-bowling-ball"></i>
+        </div>
+        <span>Indoors</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/skiing">
+        <div>
+          <i class="fa-solid fa-person-skiing"></i>
+        </div>
+        <span>Skiing</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/creativeplaces">
+        <div>
+          <i class="fa-solid fa-palette"></i>
+        </div>
+        <span>Creative Places</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/monuments">
+        <div>
+          <i class="fa-solid fa-landmark"></i>
+        </div>
+        <span>Monuments</span>
+        <div class="underline"></div>
+      </a>
+      <a class="filter" href="/listings/filter/fishing">
+        <div>
+          <i class="fa-solid fa-fish-fins"></i>
+        </div>
+        <span>Fishing</span>
+        <div class="underline"></div>
+      </a>
+    </div>
+    <div class="scroll-arrow right-arrow">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+</div>
+
+<hr class="hr" />
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filters = document.getElementById("filters");
+    const leftArrow = document.querySelector(".left-arrow");
+    const rightArrow = document.querySelector(".right-arrow");
+
+    leftArrow.addEventListener("click", () => {
+      filters.scrollBy(-200, 0);
+    });
+
+    rightArrow.addEventListener("click", () => {
+      filters.scrollBy(200, 0);
+    });
+  });
+</script>

@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<script>
+  const listing = JSON.parse(`<%- JSON.stringify(listing) %>`);
+</script>
+
+<title><%= appName %> : <%=listing.title%></title>
+
+<div class="row mb-5">
+  <div class="col-md-9 offset-md-3">
+    <h3 class="col-md-8"><%=listing.title%></h3>
+    <hr class="hr col-md-8 mb-4" />
+  </div>
+  <br />
+  <div class="card col-md-6 offset-md-3 show-card listing-card">
+    <img
+      src="<%=listing.image.url%>"
+      class="card-img-top show-img"
+      alt="<%=listing.image.filename%>"
+    />
+    <div class="card-img-overlay"></div>
+    <div class="card-body">
+      <p class="card-text">
+        Owned by -
+        <i><%= listing.owner.username %></i>
+      </p>
+      <p class="card-text desc"><%=listing.description%></p>
+      <p class="card-text"><%=listing.location%> <br /><%=listing.country%></p>
+      <p class="card-text">
+        <b> &#8377;<%=listing.price.toLocaleString("en-IN") %> </b>
+        &nbsp;/night
+      </p>
+    </div>
+  </div>
+
+  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+  <div class="btns mb-1">
+    <a
+      href="/listings/<%=listing._id%>/edit"
+      class="btn btn-primary edit-btn offset-3"
+      >Edit</a
+    >
+
+    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+      <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+  </div>
+  <% } %>
+</div>

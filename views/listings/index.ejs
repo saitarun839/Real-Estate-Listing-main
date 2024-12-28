@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<title><%= appName %></title>
+
+<%- include("../includes/filterbar.ejs") %> <% if(listings.length !== 0) { %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for(listing of listings ) { %>
+  <div class="listing p-4" id="<%= listing._id %>">
+    <a href="/listings/<%=listing._id%>">
+      <div class="card col listing-card">
+        <div class="card-img mb-2">
+          <img
+            src="<%=listing.image.url%>"
+            class="card-img-top"
+            alt="<%= listing.image.filename %>"
+            style="height: 20rem"
+          />
+        </div>
+        <div class="card-img-overlay overlay"></div>
+        <div class="card-body listing-body m-1">
+          <h5 class="card-title"><b><%=listing.title%></b></h5>
+          <h6 class="card-subtitle mb-2">
+            <i><%=listing.location%>, <%=listing.country%></i>
+          </h6>
+          <p class="card-text">
+            <b>
+              &#8377;<span id="text"
+                ><%=listing.price.toLocaleString("en-IN") %></span
+              > </b
+            >/ night
+            <br />
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <% } %>
+</div>
+<% } else {%>
+<br /><br />
+<h1 class="text-center">No Listing available right now.</h1>
+<h3 class="text-center">Check again later or add new listings.</h3>
+<% } %>

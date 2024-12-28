@@ -1,0 +1,96 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<title><%= appName %> : Edit Listing</title>
+
+<div class="row mb-5">
+  <div class="col-8 offset-2">
+    <h3>Edit your Listing</h3>
+    <hr class="hr" />
+  </div>
+  <br />
+  <div class="col-8 offset-2">
+    <form action="/listings/<%=listing._id%>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input id="title" class="form-control" type="text" name="listing[title]" placeholder="Enter title" value="<%=listing.title%>" required />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Title cannot be Empty</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea id="description" class="form-control" type="text" name="listing[description]" placeholder="Enter description" required>
+<%=listing.description%></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Description cannot be Empty</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="">Original Image</label>
+        <br />
+        <img src="<%=originalImageUrl%>" alt="" class="previewImage w-50" />
+      </div>
+
+      <div id="dropArea" class="mb-3">
+        <label class="form-label" for="image">Upload New Image</label>
+        <input name="listing[image]" id="image" class="form-control" type="file" />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label class="form-label" for="price">Price</label>
+          <input id="price" class="form-control" type="number" name="listing[price]" placeholder="Enter price" value="<%=listing.price%>" required />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Invalid Price Value</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label class="form-label" for="country">Country</label>
+          <input id="country" class="form-control" type="text" name="listing[country]" placeholder="Enter country" value="<%=listing.country%>" required />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Country name cannot be Empty</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input id="location" class="form-control" type="text" name="listing[location]" placeholder="Enter location" value="<%=listing.location%>" required />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Location cannot be Empty</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="filter">Filter</label>
+        <select name="listing[filter][]" id="filter" class="form-select" multiple required>
+          <option value="rooms" <% if (listing.filter.includes('rooms')) { %> selected <% } %>>Rooms</option>
+          <option value="iconiccities" <% if (listing.filter.includes('iconiccities')) { %> selected <% } %>>Iconic Cities</option>
+          <option value="mountains" <% if (listing.filter.includes('mountains')) { %> selected <% } %>>Mountains</option>
+          <option value="castles" <% if (listing.filter.includes('castles')) { %> selected <% } %>>Castles</option>
+          <option value="amazingpools" <% if (listing.filter.includes('amazingpools')) { %> selected <% } %>>Amazing Pools</option>
+          <option value="camping" <% if (listing.filter.includes('camping')) { %> selected <% } %>>Camping</option>
+          <option value="farms" <% if (listing.filter.includes('farms')) { %> selected <% } %>>Farms</option>
+          <option value="arctic" <% if (listing.filter.includes('arctic')) { %> selected <% } %>>Arctic</option>
+          <option value="indoors" <% if (listing.filter.includes('indoors')) { %> selected <% } %>>Indoors</option>
+          <option value="skiing" <% if (listing.filter.includes('skiing')) { %> selected <% } %>>Skiing</option>
+          <option value="creativeplaces" <% if (listing.filter.includes('creativeplaces')) { %> selected <% } %>>Creative Places</option>
+          <option value="monuments" <% if (listing.filter.includes('monuments')) { %> selected <% } %>>Monuments</option>
+          <option value="fishing" <% if (listing.filter.includes('fishing')) { %> selected <% } %>>Fishing</option>
+        </select>
+
+        <figcaption class="figure-caption">
+          Hold CTRL and click on the options to select multiple fields.
+        </figcaption>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          Please select atleast one Filter for your listing
+        </div>
+      </div>
+
+      <button class="btn btn-primary edit-btn">Edit</button>
+
+      <br />
+      <br />
+    </form>
+  </div>
+</div>
